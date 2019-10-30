@@ -103,7 +103,7 @@ Plug 'lokaltog/vim-distinguished'
 Plug 'tikhomirov/vim-glsl'
 
 " debugger
-"Plug 'critiqjo/lldb.nvim'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -544,3 +544,14 @@ let g:quickrun_config['plantuml'] = {
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 map <F10> :QuickRun<CR>
+
+" ############## gdb ###############################
+nnoremap <localleader>d  :GdbStart gdb<cr>
+nnoremap <localleader>b  :GdbBreakpointToggle<cr>
+nnoremap <localleader>r  :GdbUntil<cr>
+nnoremap <localleader>c  :GdbContinue<cr>
+nnoremap <localleader>n  :GdbNext<cr>
+nnoremap <localleader>s  :GdbStep<cr>
+nnoremap <localleader>q  :GdbFinish<cr>
+nnoremap <localleader>n  :GdbFrameUp<cr>
+nnoremap <localleader>m  :GdbFrameDown<cr>
