@@ -20,4 +20,6 @@ ln -sf $(pwd)/.gitconfig ~/.gitconfig
 ln -sf $(pwd)/.vim ~/
 ln -sf $(pwd)/.ssh ~/
 ln -sf $(pwd)/.config ~/
-vim -u ~/.vimrc +BundleInstall! +BundleClean +qall
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +PlugInstall

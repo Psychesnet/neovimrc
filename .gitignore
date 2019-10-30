@@ -1,5 +1,8 @@
-.vim/bundle
-.vim/plugin
+.vim/bundle/
+.vim/plugin/
+.vim/autoload/
+.vim/plugged/
+.config/configstore/
 .DS_store
 .ssh/id_rsa
 .ssh/id_rsa.pub

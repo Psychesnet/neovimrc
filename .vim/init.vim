@@ -80,7 +80,6 @@ Plug 'vim-scripts/a.vim'
 " for python
 Plug 'kevinw/pyflakes-vim'
 Plug 'vim-scripts/pydoc.vim'
-Plug 'rkulla/pydiction.git'
 Plug 'hdima/python-syntax'
 
 " colorscheme
@@ -214,8 +213,8 @@ noremap <c-r> <NOP>
 " ================ Visualization ====================
 
 syntax on
-set background=dark
-colorscheme hybrid
+"set background=dark
+"colorscheme hybrid
 
 " enable 256bit colors - also: override gnome-terminal's settings
 set t_Co=256
