@@ -1,0 +1,16 @@
+[user]
+	name = eric hsieh
+	email = psychesnet@gmail.com
+[color]
+	ui = auto
+[core]
+	editor = vi
+	excludesfile = ~/.gitignore
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	di = diff
+	df = diff --cached
+	info = config --list
+	ut = ls-files --others --exclude-standard

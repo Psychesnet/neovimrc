@@ -1,0 +1,10 @@
+set line /dev/tty.usbserial
+set speed 57600
+set carrier-watch off
+set prefixing all
+set parity none
+set stop-bits 1
+set modem none
+set file type bin
+set file name lit
+set flow-control none
