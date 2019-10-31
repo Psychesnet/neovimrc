@@ -83,13 +83,9 @@ Plug 'vim-scripts/pydoc.vim'
 Plug 'hdima/python-syntax'
 
 " colorscheme
-"Plug 'wombat256mod.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'chriskempson/base16-vim'
+Plug 'matveyt/vim-modest'
+Plug 'sainnhe/vim-color-vanilla-cake'
 Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
-Plug 'tpope/vim-vividchalk'
-Plug 'lokaltog/vim-distinguished'
 
 " auto-close (for parenthesis)
 " TODO: broken, since clang_complete
@@ -147,12 +143,10 @@ set scrolloff=8
 
 
 " ================ Encoding =========================
-
-"set encoding to utf8
-if &encoding != 'utf-8'
-	set encoding=utf-8              "Necessary to show Unicode glyphs
-endif
-
+set encoding=utf-8
+set fileencodings=utf-8,cp950
+set fileencoding=utf-8
+filetype on
 
 " ================ Keyboard bindings ================
 
@@ -171,54 +165,14 @@ noremap <C-x> "+d
 " paste in insert mode
 inoremap <C-v> <Esc>"+pa
 
-" shift the movement keys by 1 to the right
-noremap j h
-noremap k j
-noremap l k
-noremap č l
-
-" mapping ESC to ć
-nnoremap ć <Esc>
-nnoremap Ć <Esc>
-inoremap ć <Esc>
-inoremap Ć <Esc>
-vnoremap ć <Esc>
-vnoremap Ć <Esc>
-cnoremap ć <Esc>
-cnoremap Ć <Esc>
-" make the cursor stay on the same character when leaving insert mode
-inoremap ć <Esc>l
-inoremap Ć <Esc>l
-
-" fast scrolling
-nnoremap K 10j
-nnoremap L 10k
-vnoremap K 10j
-vnoremap L 10k
-
-" stay in normal mode after inserting a new line
-noremap o o <Bs><Esc>
-noremap O O <Bs><Esc>
-
-" mapping that opens .vimrc in a split for quick editing
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-" mapping that sources the vimrc in the current file
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" Mapping U to Redo.
-noremap U <c-r>
-noremap <c-r> <NOP>
-
-
 " ================ Visualization ====================
 
 syntax on
-"set background=dark
-"colorscheme hybrid
+set background=light
+colorscheme gruvbox
 
 " enable 256bit colors - also: override gnome-terminal's settings
 set t_Co=256
-
 
 " ================ Indentation ======================
 
@@ -226,28 +180,29 @@ set autoindent
 set smartindent
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set expandtab
 set smarttab
 set expandtab
-
 
 " ================ Number column ====================
 
 " numbers
-set number " see the line number column
+"set number " see the line number column
 
 " Toggle relative numbering, and set to absolute on loss of focus or insert mode
-autocmd InsertEnter * :set nornu
-autocmd InsertLeave * :set rnu
-" we don't want to see relative numbering while debugging
-" debugger uses its own window, so we can disable rnu when source window loses
-" focus
-autocmd BufLeave * :set nornu
-autocmd BufEnter * call SetRNU()
-function! SetRNU()
-	if(mode()!='i')
-		set rnu
-	endif
-endfunction
+"autocmd InsertEnter * :set nornu
+"autocmd InsertLeave * :set rnu
+"" we don't want to see relative numbering while debugging
+"" debugger uses its own window, so we can disable rnu when source window loses
+"" focus
+"autocmd BufLeave * :set nornu
+"autocmd BufEnter * call SetRNU()
+"function! SetRNU()
+	"if(mode()!='i')
+		"set rnu
+	"endif
+"endfunction
 
 
 " ================ Searching ========================
@@ -264,9 +219,13 @@ set smartcase
 " Highlight search results
 set hlsearch
 
-" toggle search highlighting
-nnoremap <F3> :set hlsearch!<CR>
+set ruler        " 顯示右下角設定值
+set ic           " 設定搜尋無識大小寫
+set ru           " 第幾行第幾個字
+highlight Search term=reverse ctermbg=green ctermfg=black
 
+set confirm      " 操作過程有衝突時，以明確的文字來詢問
+"set cursorline   " 顯示目前的游標位置
 
 " ================ Performance ======================
 
@@ -275,19 +234,6 @@ set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
 set ttyfast
 set ttimeoutlen=10
-
-
-" ================ Abbreviations ====================
-
-iab wiht with
-iab whit with
-iab ture true
-iab flase false
-iab wieght weight
-iab hieght height
-iab tihs this
-iab mian main
-
 
 " ================ Misc =============================
 
@@ -310,13 +256,6 @@ set history=1000
 " this fixes the problem
 set backspace=indent,eol,start
 
-" to avoid hitting:
-" 'press ENTER or type command to continue'
-" add 'silent' keyword before the command
-"
-" open a gnome-terminal with a shortcut
-noremap <leader><CR> :silent !gnome-terminal<CR>
-
 "disable preview window
 set completeopt-=preview
 
@@ -327,25 +266,24 @@ set completeopt-=preview
 
 " vim airline fonts
 if !exists('g:airline_symbols')
-	let g:airline_symbols= {}
+    let g:airline_symbols= {}
 endif
 
 " unicode symbols
-let g:airline_left_alt_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_powerline_fonts = 1
-
+let g:airline_solarized_bg='light'
 
 " ################ NERDTree #########################
 
@@ -369,10 +307,8 @@ let g:NERDTreeMapOpenVSplit = 'v'
 
 " ################## NERDTreeTab #####################
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
-" 关闭同步
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
-" 自动开启nerdtree
 " let g:nerdtree_tabs_open_on_console_startup=1
 
 " ################ UltiSnips ########################
@@ -476,27 +412,12 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
-" ################ A ################################
-
-" A - switching between files
-
-" header / source
-nnoremap <F4> :A<CR>
-inoremap <F4> <ESC>:A<CR>a
-
-" file under cursor
-nnoremap <F2> :IH<CR>
-inoremap <F2> <ESC>:IH<CR>
-
-
 " ################ Easymotion #######################
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_leader_key='<Space>'
 
 " ################# delimitMate #####################
-" 引号配对补
 let b:delimitMate_nesting_quotes = ['"']
-
 
 " ################ CTAGS ############################
 
