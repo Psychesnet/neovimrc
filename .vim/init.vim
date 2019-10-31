@@ -98,6 +98,9 @@ Plug 'morhetz/gruvbox'
 " glsl color
 Plug 'tikhomirov/vim-glsl'
 
+" git ++
+Plug 'mhinz/vim-signify'
+
 " debugger
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
@@ -126,7 +129,7 @@ set autoread
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " Notification after file change
 autocmd FileChangedShellPost *
-			\ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+            \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 
 " ================ Folds ============================
@@ -146,14 +149,13 @@ set scrolloff=8
 set encoding=utf-8
 set fileencodings=utf-8,cp950
 set fileencoding=utf-8
-filetype on
 
 " ================ Keyboard bindings ================
 
 " noremap - no recursive mapping
-
-" set the leader key to comma
+" 修改leader键
 let mapleader = ','
+let g:mapleader = ','
 
 " clipboard
 " copy
@@ -199,9 +201,9 @@ set expandtab
 "autocmd BufLeave * :set nornu
 "autocmd BufEnter * call SetRNU()
 "function! SetRNU()
-	"if(mode()!='i')
-		"set rnu
-	"endif
+"if(mode()!='i')
+"set rnu
+"endif
 "endfunction
 
 
@@ -226,6 +228,31 @@ highlight Search term=reverse ctermbg=green ctermfg=black
 
 set confirm      " 操作過程有衝突時，以明確的文字來詢問
 "set cursorline   " 顯示目前的游標位置
+
+" jump to the last position when reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+                \| exe "normal! g'\"" | endif
+endif
+
+set nocompatible              " be iMproved, required
+filetype on                   " required
+
+set foldenable
+set foldmethod=indent
+set foldlevel=99
+" 代码折叠自定义快捷键
+let g:FoldMethod = 0
+map <leader>zz :call ToggleFold()<cr>
+fun! ToggleFold()
+    if g:FoldMethod == 0
+        exe "normal! zM"
+        let g:FoldMethod = 1
+    else
+        exe "normal! zR"
+        let g:FoldMethod = 0
+    endif
+endfun
 
 " ================ Performance ======================
 
@@ -290,7 +317,7 @@ let g:airline_solarized_bg='light'
 " shift+i (show hidden files)
 
 " ctrl+n open/closes nerd tree
-noremap <leader>n :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR><CR>
 
 " high light
 let NERDTreeHighlightCursorline=1
@@ -306,10 +333,10 @@ let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
 
 " ################## NERDTreeTab #####################
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+"map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
-" let g:nerdtree_tabs_open_on_console_startup=1
+"let g:nerdtree_tabs_open_on_console_startup=1
 
 " ################ UltiSnips ########################
 
@@ -366,8 +393,8 @@ let g:ale_cpp_clang_executable = 'clang++-5.0'
 
 " linter
 let g:ale_linters = {
-			\   'cpp': ['clang']
-			\}
+            \   'cpp': ['clang']
+            \}
 let g:ale_cpp_clang_options = '-std=c++1z -O0 -Wextra -Wall -Wpedantic -I /usr/include/eigen3'
 "let g:ale_cpp_clangtidy_options = '-checks="cppcoreguidelines-*"'
 "let g:ale_cpp_cpplint_options = ''
@@ -382,14 +409,14 @@ let g:ale_cpp_clang_options = '-std=c++1z -O0 -Wextra -Wall -Wpedantic -I /usr/i
 
 let g:clang_format#command = 'clang-format-3.8'
 let g:clang_format#style_options = {
-			\ "BreakBeforeBraces" : "Attach",
-			\ "UseTab" : "Never",
-			\ "IndentWidth" : 4,
-			\ "ColumnLimit" : 100,
-			\ "AccessModifierOffset" : -4,
-			\ "AllowShortIfStatementsOnASingleLine" : "false",
-			\ "AllowShortFunctionsOnASingleLine" : "false",
-			\}
+            \ "BreakBeforeBraces" : "Attach",
+            \ "UseTab" : "Never",
+            \ "IndentWidth" : 4,
+            \ "ColumnLimit" : 100,
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AllowShortFunctionsOnASingleLine" : "false",
+            \}
 
 " shortcuts for autoformatting the entire file: Ctrl+j
 inoremap <C-j> <Esc>:ClangFormat<CR>a
@@ -451,16 +478,16 @@ map <leader><space> :FixWhitespace<cr>
 
 " ############### quick run #########################
 let g:quickrun_config = {
-\   "_" : {
-\       "outputter" : "message",
-\   },
-\}
+            \   "_" : {
+            \       "outputter" : "message",
+            \   },
+            \}
 
 let g:quickrun_config['plantuml'] = {
-\  'command': 'plantuml'
-\, 'exec': ['%c %s', 'open %s:p:r.png']
-\, 'outputter': 'null'
-\}
+            \  'command': 'plantuml'
+            \, 'exec': ['%c %s', 'open %s:p:r.png']
+            \, 'outputter': 'null'
+            \}
 
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
