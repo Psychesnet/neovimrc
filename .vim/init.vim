@@ -69,6 +69,7 @@ Plug 'vim-scripts/indexer.tar.gz'
 
 " UltiSnips
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " easy motion
 Plug 'Raimondi/delimitMate'
@@ -100,6 +101,11 @@ Plug 'tikhomirov/vim-glsl'
 
 " git ++
 Plug 'mhinz/vim-signify'
+Plug 'iberianpig/tig-explorer.vim'
+Plug 'rbgrouleff/bclose.vim'
+
+" show function
+Plug 'majutsushi/tagbar'
 
 " debugger
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
@@ -338,6 +344,11 @@ let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
 "let g:nerdtree_tabs_open_on_console_startup=1
 
+" ################# tagbar ##########################
+nmap <Leader>t :TagbarToggle<CR><CR>
+let g:tagbar_autofocus = 1
+"let g:tagbar_ctags_bin = '~/git/ctags-5.8/ctags'
+
 " ################ UltiSnips ########################
 
 " make a dir Ultisnips in: '~/.config/nvim/UltiSnips/'
@@ -345,9 +356,13 @@ let g:nerdtree_tabs_synchronize_focus=0
 " eg. cpp.snippets
 
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<down>"
+let g:UltiSnipsJumpBackwardTrigger = "<up>"
+let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
+let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
 let g:UltiSnipsUsePythonVersion = 3
+" 进入对应filetype的snippets进行编辑
+map ,us :UltiSnipsEdit<CR>
 
 
 " ################ Clang complete ###################
@@ -503,3 +518,7 @@ nnoremap <localleader>s  :GdbStep<cr>
 nnoremap <localleader>q  :GdbFinish<cr>
 nnoremap <localleader>n  :GdbFrameUp<cr>
 nnoremap <localleader>m  :GdbFrameDown<cr>
+
+" ############# git ################################
+" open tig with Project root path
+nnoremap <Leader>g :TigOpenProjectRootDir<CR><CR>
