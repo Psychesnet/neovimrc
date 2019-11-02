@@ -17,9 +17,9 @@ ln -sf $(pwd)/.bash_profile ~/.bash_profile
 ln -sf $(pwd)/.kermrc ~/.kermrc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
 # folder
-ln -sf $(pwd)/.vim ~/
-ln -sf $(pwd)/.ssh ~/
-ln -sf $(pwd)/.config ~/
+rm -rf ~/.vim && ln -sf $(pwd)/.vim ~/.vim
+rm -rf ~/.ssh && ln -sf $(pwd)/.ssh ~/.ssh
+rm -rf ~/.config && ln -sf $(pwd)/.config ~/.config
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall
