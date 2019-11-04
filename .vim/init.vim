@@ -217,7 +217,7 @@ set expandtab
 " ================ Searching ========================
 
 " ctrl+] on ctags
-nmap <Leader>c :!ctags -R --exclude=.git . <CR><CR>
+nmap <Leader>c :!ctags -R --exclude=.git --fields=+l . <CR><CR>
 nmap <Leader>s :checkhealth <CR><CR>
 
 " Ignorecase when searching
