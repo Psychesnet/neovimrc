@@ -81,7 +81,7 @@ Plug 'vim-scripts/a.vim'
 
 " for python
 Plug 'kevinw/pyflakes-vim'
-Plug 'vim-scripts/pydoc.vim'
+"Plug 'vim-scripts/pydoc.vim'
 Plug 'hdima/python-syntax'
 
 " colorscheme
@@ -385,8 +385,8 @@ map ,us :UltiSnipsEdit<CR>
 " ################ YouCompleteMe ####################
 
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_show_diagnostics_ui = 0
