@@ -218,6 +218,7 @@ set expandtab
 
 " ctrl+] on ctags
 nmap <Leader>c :!ctags -R --exclude=.git . <CR><CR>
+nmap <Leader>s :checkhealth <CR><CR>
 
 " Ignorecase when searching
 set ignorecase
