@@ -308,13 +308,19 @@ let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='light'
@@ -365,23 +371,6 @@ let g:UltiSnipsUsePythonVersion = 3
 " 进入对应filetype的snippets进行编辑
 map ,us :UltiSnipsEdit<CR>
 
-
-" ################ Clang complete ###################
-
-"let g:clang_use_library = 1
-"let g:clang_library_path='/usr/lib/llvm-5.0/lib/libclang.so.1'
-"let g:clang_periodic_quickfix=1
-"let g:clang_auto_select = 1
-
-"let g:clang_snippets = 1
-"let g:clang_snippets_engine = 'ultisnips'
-
-" I don't know how to change the keybindings to navigate
-" the 'completion suggestions menu' with ctrl+k and ctrl+l
-"inoremap <C-k> <Down>
-"inoremap <C-l> <Up>
-
-
 " ################ YouCompleteMe ####################
 
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
@@ -399,24 +388,24 @@ set completeopt=menu,menuone
 
 " 对指定源文件，输入两个字母后即触发语义补全
 let g:ycm_semantic_triggers =  {
-           \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-           \ 'cs,lua,javascript': ['re!\w{2}'],
-           \ }
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ }
 
-let g:ycm_filetype_whitelist = { 
+let g:ycm_filetype_whitelist = {
             \ "c":1,
-            \ "cpp":1, 
+            \ "cpp":1,
             \ "python":1,
             \ "sh":1,
             \ "zsh":1,
             \ }
 
 let g:ycm_filetype_blacklist = {
-        \ 'markdown' : 1,
-        \ 'text' : 1,
-        \ 'pandoc' : 1,
-        \ 'infolog' : 1,
-        \}
+            \ 'markdown' : 1,
+            \ 'text' : 1,
+            \ 'pandoc' : 1,
+            \ 'infolog' : 1,
+            \}
 
 " ################ echodoc ##########################
 set cmdheight=2
