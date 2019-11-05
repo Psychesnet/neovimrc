@@ -304,6 +304,9 @@ set completeopt-=preview
 
 " ================ Plugins ==========================
 
+" ################ a.vim ############################
+nmap <Leader>a :A<CR><CR>
+
 " ################ Airline ##########################
 
 " vim airline fonts
@@ -458,7 +461,7 @@ inoremap <C-j> <Esc>:ClangFormat<CR>a
 nnoremap <C-j> <Esc>:ClangFormat<CR>
 
 " ################ auto format ######################
-noremap <leader>a :Autoformat<CR><CR>
+noremap <leader>i :Autoformat<CR><CR>
 let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
 
