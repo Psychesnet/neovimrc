@@ -2,6 +2,7 @@
 .vim/plugin/
 .vim/autoload/
 .vim/plugged/
+.vim/cache/
 .vim/.netrwhist
 .config/configstore/
 .DS_store
