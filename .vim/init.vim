@@ -222,7 +222,7 @@ set expandtab
 
 " ctrl+] on ctags
 set tags=./.tags;,.tags
-nmap <Leader>s :checkhealth <CR><CR>
+nmap <leader>s :checkhealth <CR>
 
 " Ignorecase when searching
 set ignorecase
@@ -305,7 +305,7 @@ set completeopt-=preview
 " ================ Plugins ==========================
 
 " ################ a.vim ############################
-nmap <Leader>a :A<CR><CR>
+nmap <leader>a :A<CR>
 
 " ################ Airline ##########################
 
@@ -341,7 +341,7 @@ let g:airline_solarized_bg='light'
 " shift+i (show hidden files)
 
 " ctrl+n open/closes nerd tree
-noremap <leader>n :NERDTreeToggle<CR><CR>
+noremap <leader>n :NERDTreeToggle<CR>
 
 " high light
 let NERDTreeHighlightCursorline=1
@@ -363,7 +363,7 @@ let g:nerdtree_tabs_synchronize_focus=0
 "let g:nerdtree_tabs_open_on_console_startup=1
 
 " ################# tagbar ##########################
-nmap <Leader>t :TagbarToggle<CR><CR>
+nmap <Leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 "let g:tagbar_ctags_bin = '~/git/ctags-5.8/ctags'
 
@@ -461,7 +461,7 @@ inoremap <C-j> <Esc>:ClangFormat<CR>a
 nnoremap <C-j> <Esc>:ClangFormat<CR>
 
 " ################ auto format ######################
-noremap <leader>i :Autoformat<CR><CR>
+noremap <leader>i :Autoformat<CR>
 let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
 
@@ -544,7 +544,7 @@ nnoremap <localleader>m  :GdbFrameDown<cr>
 
 " ############# git ################################
 " open tig with Project root path
-nnoremap <Leader>g :TigOpenProjectRootDir<CR><CR>
+nnoremap <Leader>g :TigOpenProjectRootDir<CR>
 
 " ############## gutentags #########################
 "let g:gutentags_ctags_executable = '~/git/ctags-5.8/ctags'
