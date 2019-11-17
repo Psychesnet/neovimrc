@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$(uname)" = "Darwin" ]; then
-    echo "This is mac os x"
+    echo "This is mac os x, maybe need to run xcode-select --install first"
     brew install neovim node
     pip3 install neovim
     npm install -g yarn

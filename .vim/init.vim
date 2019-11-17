@@ -115,6 +115,9 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 " fuzzy open file
 Plug 'Yggdroot/LeaderF'
 
+" supertab for pop mapping
+Plug 'ervandew/supertab'
+
 call plug#end()
 
 
@@ -196,7 +199,6 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set smarttab
-set expandtab
 
 " ================ Number column ====================
 
@@ -374,7 +376,7 @@ let g:tagbar_autofocus = 1
 " eg. cpp.snippets
 
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<down>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<up>"
 let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
 let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
@@ -585,3 +587,6 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
+" ################## supertab ######################
+let g:SuperTabMappingForeward="<S-Tab>"
