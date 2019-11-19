@@ -118,6 +118,9 @@ Plug 'Yggdroot/LeaderF'
 " supertab for pop mapping
 Plug 'ervandew/supertab'
 
+" dir diff
+Plug 'will133/vim-dirdiff'
+
 call plug#end()
 
 
@@ -509,6 +512,9 @@ nnoremap \\  :Ag!<space>
 
 "search for word under cursor by pressing |
 nnoremap \| :Ag! "\b<C-R><C-W>\b"<cr>:cw<cr>
+
+" ################## dirdiff ######################
+map <leader>d :DirDiff<space>
 
 " ############### closetag ##########################
 let g:closetag_html_style=1
