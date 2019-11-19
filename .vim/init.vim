@@ -110,7 +110,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'majutsushi/tagbar'
 
 " debugger
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+Plug 'vim-scripts/Conque-GDB'
 
 " fuzzy open file
 Plug 'Yggdroot/LeaderF'
@@ -540,15 +540,31 @@ nmap <Leader>r <Plug>(quickrun)
 map <F10> :QuickRun<CR>
 
 " ############## gdb ###############################
-nnoremap <localleader>d  :GdbStart gdb<cr>
-nnoremap <localleader>b  :GdbBreakpointToggle<cr>
-nnoremap <localleader>r  :GdbUntil<cr>
-nnoremap <localleader>c  :GdbContinue<cr>
-nnoremap <localleader>n  :GdbNext<cr>
-nnoremap <localleader>s  :GdbStep<cr>
-nnoremap <localleader>q  :GdbFinish<cr>
-nnoremap <localleader>n  :GdbFrameUp<cr>
-nnoremap <localleader>m  :GdbFrameDown<cr>
+"待除錯檔案位於螢幕上方
+let g:ConqueGdb_SrcSplit = 'above'
+"儲存歷史
+let g:ConqueGdb_SaveHistory = 1
+"修改Conque GDB的Leader鍵
+let g:ConqueGdb_Leader = ';'
+"總是顯示顏色
+let g:ConqueTerm_Color = 2
+"程式結束執行時，關閉Conque GDB視窗
+let g:ConqueTerm_CloseOnEnd = 1
+"Conque Term配置錯誤時顯示警告資訊
+let g:ConqueTerm_StartMessages = 0
+let g:ConqueGdb_GdbExe = '/home/erihsi/git/dev1/src/chk/bs_br/output/host/bin/aarch64-linux-gdb'
+nnoremap \g  :ConqueGdb -q -x debugOCD.gdb <CR>
+
+"Keyboard Mapping	Function
+"",r	Run program
+"",c	Continue program
+"",n	Next line
+"",s	Step line
+"",p	Print identifier under cursor
+"",b	Set break point
+"",d	Delete break point
+"",f	Finish
+"",t	Backtrace
 
 " ############# git ################################
 " open tig with Project root path
