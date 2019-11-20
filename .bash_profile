@@ -9,3 +9,7 @@ function ntfs() {
     sudo mkdir /Volumes/$2
     sudo mount -o rw,auto,nobrowse -t ntfs /dev/$1 /Volumes/$2
 }
+
+function dirdiff() {
+    nvim -c "DirDiff $1 $2"
+}

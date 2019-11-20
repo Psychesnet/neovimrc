@@ -131,7 +131,6 @@ set path+=**
 set wildmenu
 set showcmd
 
-
 " ================ File management ==================
 
 " Turn off swap files
@@ -161,6 +160,8 @@ set nofoldenable        "dont fold by default
 " Start scrolling when we're 8 lines away from margins
 set scrolloff=8
 
+" auto wrap
+set wrap
 
 " ================ Encoding =========================
 set encoding=utf-8
@@ -292,9 +293,6 @@ set mat=0
 
 " When the last window will have a status line (2 = always)
 set laststatus=2
-
-" disable wrapping of long lines into multiple lines
-set nowrap
 
 " history
 set history=1000
