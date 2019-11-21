@@ -121,6 +121,9 @@ Plug 'ervandew/supertab'
 " dir diff
 Plug 'will133/vim-dirdiff'
 
+" hexedit
+Plug 'Shougo/vinarise.vim'
+
 call plug#end()
 
 
@@ -303,7 +306,6 @@ set backspace=indent,eol,start
 
 "disable preview window
 set completeopt-=preview
-
 
 " ================ Plugins ==========================
 
@@ -610,3 +612,6 @@ let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
 " ################## supertab ######################
 let g:SuperTabMappingForeward="<S-Tab>"
+
+" ################## vinarise ######################
+let g:vinarise_enable_auto_detect = 1
