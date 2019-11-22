@@ -3,8 +3,14 @@
 if [ "$(uname)" = "Darwin" ]; then
     echo "This is mac os x, maybe need to run xcode-select --install first"
     brew install neovim node
-    pip3 install neovim pynvim
+    # py3
+    pip3 install neovim pyvim pynvim
+    # node.js
     npm install -g yarn
+    npm install -g neovim
+    # ruby
+    gem install neovim
+    gem environment
 else
     echo "This maybe be Linux"
     sudo apt-get install build-essentail vim \
