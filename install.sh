@@ -22,6 +22,7 @@ ln -sf $(pwd)/.inputrc ~/.inputrc
 ln -sf $(pwd)/.bash_profile ~/.bash_profile
 ln -sf $(pwd)/.kermrc ~/.kermrc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
+ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
 # folder
 rm -rf ~/.vim && ln -sf $(pwd)/.vim ~/.vim
 rm -rf ~/.ssh && ln -sf $(pwd)/.ssh ~/.ssh
