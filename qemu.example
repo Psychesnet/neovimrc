@@ -1,0 +1,14 @@
+qemu-system-aarch64 \
+        -kernel Image \
+        -cpu cortex-a53 \
+        -machine virt \
+        -drive file="rootfs.squashfs",format=raw \
+        -initrd rootfs.cpio.gz \
+        -append 'console=ttyAMA0 root=/dev/ram0 rootfstype=squashfs init=/bin/sh /etc/qemu/init' \
+        -netdev user,id=user.0,net=192.168.0.0/24,dhcpstart=192.168.0.100,dns=192.168.0.1 \
+        -device e1000,netdev=user.0 \
+        -net nic,id=user.1 \
+        -netdev user,id=user.2,hostfwd=tcp::2200-:22,hostfwd=tcp::3300-:3300, \
+        -device e1000,netdev=user.2 \
+        -m 1024M \
+        --nographic
