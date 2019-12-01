@@ -23,7 +23,9 @@ ln -sf $(pwd)/.bash_profile ~/.bash_profile
 ln -sf $(pwd)/.kermrc ~/.kermrc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
+# for screen
 ln -sf $(pwd)/.screenrc ~/.screenrc
+ln -s ~/.bash_profile ~/.bashrc
 # folder
 rm -rf ~/.vim && ln -sf $(pwd)/.vim ~/.vim
 rm -rf ~/.ssh && ln -sf $(pwd)/.ssh ~/.ssh
