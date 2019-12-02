@@ -285,7 +285,6 @@ set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
 set ttyfast
 set ttimeoutlen=10
-set mouse=a             " hold shift to copy xterm
 
 " ================ Misc =============================
 
