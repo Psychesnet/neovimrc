@@ -8,19 +8,23 @@ defscrollback 5000
 # no welcome message
 startup_message off
 
-# 256 colors
-attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-defbce on
-
 # mouse tracking allows to switch region focus by clicking
 mousetrack on
+
+altscreen on
+attrcolor b ".I"
+defbce "on"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+term screen-256color
 
 # get rid of silly xoff stuff
 bind _ split
 
 # unsplit
 bind X remove
+
+# source .bash_profile
+shell -$SHELL
 
 # layouts
 layout autosave on

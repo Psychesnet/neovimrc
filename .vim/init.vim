@@ -192,10 +192,10 @@ let g:mapleader = ','
 
 syntax on
 set background=light
-colorscheme gruvbox
+"colorscheme gruvbox
 
 " enable 256bit colors - also: override gnome-terminal's settings
-set t_Co=256
+"set t_Co=256
 
 " ================ Indentation ======================
 
@@ -285,6 +285,7 @@ set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
 set ttyfast
 set ttimeoutlen=10
+set mouse=a             " hold shift to copy xterm
 
 " ================ Misc =============================
 
