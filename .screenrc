@@ -5,6 +5,9 @@ hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)
 # huge scrollback buffer
 defscrollback 5000
 
+# mouse can scroll up/down
+termcapinfo xterm* ti@:te@
+
 # no welcome message
 startup_message off
 
