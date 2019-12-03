@@ -1,3 +1,4 @@
+# x86
 qemu-system-aarch64 \
         -kernel Image \
         -cpu cortex-a53 \
@@ -12,3 +13,17 @@ qemu-system-aarch64 \
         -device e1000,netdev=user.2 \
         -m 1024M \
         --nographic
+
+# arm64
+qemu-system-aarch64 \
+	-kernel Image \
+	-cpu cortex-a53 \
+	-machine virt \
+	-drive if=none,id=image,file="rootfs.squashfs",format=raw \
+	-append 'console=ttyAMA0 root=/dev/vda rootfstype=squashfs init=/bin/sh /etc/qemu/init' \
+	-device virtio-blk-device,drive=image \
+	-netdev user,id=user0,hostfwd=tcp::2200-:22,hostfwd=tcp::3300-:3300 \
+	-device virtio-net-device,netdev=user0 \
+	-m 1024M \
+	--nographic
+
