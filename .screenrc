@@ -363,6 +363,8 @@ defnonblock on
 # Don't you want to start programs which need a DISPLAY ?
 # setenv DISPLAY ''
 
+backtick 0 30 30 sh -c 'screen -ls | grep --color=no -o "$PPID[^[:space:]]*"'
 hardstatus alwayslastline
-hardstatus string '%{WB}%H %{W}| %{Y}%l %{W}| %?%{w}%-w%?%{+b g}[%{W}%{r}%n%{W} %t%?{%u}%?%{-b g}]%{W}%?%+w%?%=%{G}| %{Y}%d-%m-%Y %c:%s '
-
+ hardstatus string '%{WK}%H %{W}| %{Y}%l %{W}| %?%{w}%-w%?%{+k g}[%{W}%{r}%n%{W} %t%?{%u}%?%{-k g}]%{W}%?%+w%?%=%{G}| %{Y}%d-%m-%Y %c:%s '
+#hardstatus string "%{= KW} %H [%`] %{= Kw}|%{-} %-Lw%{= bW}%n%f %t%{-}%+Lw %=%C %Y-%M-%d"
+# # http://www.gnu.org/software/screen/manual/html_node/String-Escapes.html # # %{= wK} : set colors to bright white (W) on bright black (K) and keep current text styles (=) # %H : hostname # [ : opening bracket character # %` : print output of 'backtick' command (defined elsewhere in .screenrc) # ] : closing bracket character # %{= wW} : set colors to white (w) on bright black (K) and keep current text styles (=) # | : bar character # ${-} : restore colors to previous colors / undo last color change # %-Lw : list windows before current window (L [optional] = "include flags") # %{= bW} : set colors to bright white (W) on blue (b) and keep current text styles (=) # %f : window flags # %t : window title # %{-} : restore colors to previous colors / undo last color change # %+Lw : list windows after current window (L [optional] = "include flags") # %= : expand to fill all space (used here to make remaining content flush right) # %C : current time (12-hr; 24-hr is %c) # %a : am/pm (lowercase; uppercase is %A) # %Y : current year # - : hyphen character # %m : current month (0-padded; %M for "Jan" etc.) # - : hyphen character # %d : current date (0-padded)
