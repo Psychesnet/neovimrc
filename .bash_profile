@@ -3,6 +3,9 @@ alias wgets='wget --no-check-certificate'
 alias pi='picocom -b 1500000 /dev/tty.usbserial-FT2SRPNZ'
 alias vimdiff='nvim -d'
 
+# log ssl key
+export SSLKEYLOGFILE=~/.ssl-key.log
+
 function ntfs() {
     sudo umount /Volumes/$2
     sudo mkdir /Volumes/$2
