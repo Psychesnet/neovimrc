@@ -230,7 +230,7 @@ set smarttab
 
 nmap <Leader>c :!ctags -R --exclude=.git --fields=+l . <CR>
 " ctrl+] on ctags
-set tags=./.tags;,.tags
+set tags=./tags;,.tags
 nmap <leader>s :checkhealth <CR>
 
 " Ignorecase when searching
