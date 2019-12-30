@@ -22,9 +22,9 @@ Plug 'w0rp/ale'
 " auto formatter
 Plug 'rhysd/vim-clang-format'
 
-" defx
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kristijanhusak/defx-icons'
+" nerd tree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
 
 " quick compiler
 Plug 'thinca/vim-quickrun'
@@ -47,8 +47,9 @@ Plug 'terryma/vim-multiple-cursors'
 " nerd commenter
 Plug 'scrooloose/nerdcommenter'
 
-" lightline
-Plug 'itchyny/lightline.vim'
+" airline (powerline)
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " enhanced highlight
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -297,7 +298,7 @@ set mat=0
 set laststatus=2
 
 " history
-set history=9999
+set history=1000
 
 " on some systems the backspace does not work as expected.
 " this fixes the problem
@@ -311,38 +312,60 @@ set completeopt-=preview
 " ################ a.vim ############################
 nmap <leader>a :A<CR>
 
-" ################ lightline ##########################
+" ################ Airline ##########################
 
+" vim airline fonts
+if !exists('g:airline_symbols')
+    let g:airline_symbols= {}
+endif
 
-" ################ defx #########################
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_powerline_fonts = 1
+let g:airline_solarized_bg='light'
 
-" ctrl+n open/closes defx
-nmap <silent> <Leader>n :Defx <CR>
-autocmd FileType defx call s:defx_mappings()
+" ################ NERDTree #########################
 
-function! s:defx_mappings() abort
-  nnoremap <silent><buffer><expr> l     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
-  nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
-  nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
-endfunction
+" shift+i (show hidden files)
 
-function! s:defx_toggle_tree() abort
-    " Open current file, or toggle directory expand/collapse
-    if defx#is_directory()
-        return defx#do_action('open_or_close_tree')
-    endif
-    return defx#do_action('multi', ['drop'])
-endfunction
+" ctrl+n open/closes nerd tree
+noremap <leader>n :NERDTreeToggle<CR>
 
-call defx#custom#option('_', {
-      \ 'winwidth': 30,
-      \ 'split': 'vertical',
-      \ 'direction': 'toright',
-      \ 'show_ignored_files': 0,
-      \ 'buffer_name': '',
-      \ 'toggle': 1,
-      \ 'resume': 1
-      \ })
+" high light
+let NERDTreeHighlightCursorline=1
+
+" quit nerd tree on file open
+let g:NERDTreeQuitOnOpen = 1
+
+" show nerd tree always on the right instead on the left
+let g:NERDTreeWinPos = "right"
+
+" how to open window
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapOpenVSplit = 'v'
+
+" ################## NERDTreeTab #####################
+"map <Leader>n <plug>NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_synchronize_view=0
+let g:nerdtree_tabs_synchronize_focus=0
+"let g:nerdtree_tabs_open_on_console_startup=1
 
 " ################# tagbar ##########################
 nmap <Leader>t :TagbarToggle<CR>
