@@ -86,7 +86,6 @@ Plug 'hdima/python-syntax'
 
 " colorscheme
 Plug 'matveyt/vim-modest'
-Plug 'sainnhe/vim-color-vanilla-cake'
 Plug 'morhetz/gruvbox'
 
 " auto-close (for parenthesis)
