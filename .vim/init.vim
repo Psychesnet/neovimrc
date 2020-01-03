@@ -373,7 +373,7 @@ let g:nerdtree_tabs_synchronize_focus=0
 " ################# tagbar ##########################
 nmap <Leader>t :TlistToggle<CR>
 let g:Tlist_GainFocus_On_ToggleOpen= 1
-let g:Tlist_Ctags_Cmd = '~/git/ctags-5.8/ctags'
+" let g:Tlist_Ctags_Cmd = '~/git/ctags-5.8/ctags'
 
 " ################ UltiSnips ########################
 
