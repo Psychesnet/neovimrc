@@ -105,7 +105,7 @@ Plug 'iberianpig/tig-explorer.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " show function
-Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/taglist.vim'
 
 " debugger
 Plug 'vim-scripts/Conque-GDB'
@@ -121,6 +121,10 @@ Plug 'will133/vim-dirdiff'
 
 " hexedit
 Plug 'Shougo/vinarise.vim'
+
+" extend source
+Plug 'wesleyche/SrcExpl'
+Plug 'wesleyche/Trinity'
 
 call plug#end()
 
@@ -367,9 +371,9 @@ let g:nerdtree_tabs_synchronize_focus=0
 "let g:nerdtree_tabs_open_on_console_startup=1
 
 " ################# tagbar ##########################
-nmap <Leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-"let g:tagbar_ctags_bin = '~/git/ctags-5.8/ctags'
+nmap <Leader>t :TlistToggle<CR>
+let g:Tlist_GainFocus_On_ToggleOpen= 1
+let g:Tlist_Ctags_Cmd = '~/git/ctags-5.8/ctags'
 
 " ################ UltiSnips ########################
 
@@ -592,3 +596,55 @@ let g:SuperTabMappingForeward="<S-Tab>"
 
 " ################## vinarise ######################
 let g:vinarise_enable_auto_detect = 1
+
+" ################# Src Extend ####################
+" // Set the height of Source Explorer window
+let g:SrcExpl_winHeight = 8
+
+" // Set 100 ms for refreshing the Source Explorer
+let g:SrcExpl_refreshTime = 100
+
+" // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_jumpKey = "<ENTER>"
+
+" // Set "Space" key for back from the definition context
+let g:SrcExpl_gobackKey = "<SPACE>"
+
+" // In order to avoid conflicts, the Source Explorer should know what plugins except
+" // itself are using buffers. And you need add their buffer names into below list
+" // according to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
+        \ "_NERD_tree_",
+        \ "Source_Explorer"
+    \ ]
+
+" // The color schemes used by Source Explorer. There are five color schemes
+" // supported for now - Red, Cyan, Green, Yellow and Magenta. Source Explorer
+" // will pick up one of them randomly when initialization.
+let g:SrcExpl_colorSchemeList = [
+        \ "Red",
+        \ "Cyan",
+        \ "Green",
+        \ "Yellow",
+        \ "Magenta"
+    \ ]
+
+" // Enable/Disable the local definition searching, and note that this is not
+" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
+" // It only searches for a match with the keyword according to command 'gd'
+let g:SrcExpl_searchLocalDef = 1
+
+" // Workaround for Vim bug @https://goo.gl/TLPK4K as any plugins using autocmd for
+" // BufReadPre might have conflicts with Source Explorer. e.g. YCM, Syntastic etc.
+let g:SrcExpl_nestedAutoCmd = 1
+
+" // Do not let the Source Explorer update the tags file when opening
+let g:SrcExpl_isUpdateTags = 0
+
+" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to
+" // create/update the tags file
+let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
+
+" ##################### trinity ######################
+nmap <leader>e  :TrinityToggleAll<CR>
