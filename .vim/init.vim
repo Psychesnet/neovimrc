@@ -608,7 +608,7 @@ let g:SrcExpl_refreshTime = 100
 let g:SrcExpl_jumpKey = "<ENTER>"
 
 " // Set "Space" key for back from the definition context
-let g:SrcExpl_gobackKey = "<SPACE>"
+let g:SrcExpl_gobackKey = "<NONE>"
 
 " // In order to avoid conflicts, the Source Explorer should know what plugins except
 " // itself are using buffers. And you need add their buffer names into below list
