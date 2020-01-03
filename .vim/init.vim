@@ -123,8 +123,8 @@ Plug 'will133/vim-dirdiff'
 Plug 'Shougo/vinarise.vim'
 
 " extend source
-Plug 'wesleyche/SrcExpl'
-Plug 'wesleyche/Trinity'
+Plug 'Psychesnet/SrcExpl'
+Plug 'Psychesnet/Trinity'
 
 call plug#end()
 
@@ -599,7 +599,7 @@ let g:vinarise_enable_auto_detect = 1
 
 " ################# Src Extend ####################
 " // Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 8
+let g:SrcExpl_winHeight = 100
 
 " // Set 100 ms for refreshing the Source Explorer
 let g:SrcExpl_refreshTime = 100
