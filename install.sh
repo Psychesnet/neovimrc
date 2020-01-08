@@ -6,6 +6,7 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install the_silver_searcher
     brew install dbus
     brew services start dbus
+    brew install cmake
     # py3
     pip3 install neovim pyvim pynvim
     # node.js
