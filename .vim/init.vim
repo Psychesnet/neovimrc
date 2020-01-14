@@ -307,8 +307,18 @@ set history=1000
 " this fixes the problem
 set backspace=indent,eol,start
 
-"disable preview window
+" disable preview window
 set completeopt-=preview
+
+" on/off show line
+function! NumberToggle()
+  if(&number == 1)
+    set nonu
+  else
+    set nu
+  endif
+endfunc
+nnoremap <leader>x :call NumberToggle()<cr>
 
 " ================ Plugins ==========================
 
@@ -556,18 +566,23 @@ let g:ConqueTerm_CloseOnEnd = 1
 "Conque Term配置錯誤時顯示警告資訊
 let g:ConqueTerm_StartMessages = 0
 let g:ConqueGdb_GdbExe = 'aarch64-linux-gdb'
-nnoremap \g  :ConqueGdb -q -x debugOCD.gdb <CR>
+
+function! GdbAction()
+    call NumberToggle()
+    ConqueGdb -q -x debugOCD.gdb
+endfunc
+nnoremap \g  :call GdbAction() <CR>
 
 "Keyboard Mapping	Function
-"",r	Run program
-"",c	Continue program
-"",n	Next line
-"",s	Step line
-"",p	Print identifier under cursor
-"",b	Set break point
-"",d	Delete break point
-"",f	Finish
-"",t	Backtrace
+";r	Run program
+";c	Continue program
+";n	Next line
+";s	Step line
+";p	Print identifier under cursor
+";b	Set break point
+";d	Delete break point
+";f	Finish
+";t	Backtrace
 
 " ############# git ################################
 " open tig with Project root path
