@@ -544,7 +544,7 @@ map <F10> :QuickRun<CR>
 
 " ############## gdb ###############################
 "待除錯檔案位於螢幕上方
-let g:ConqueGdb_SrcSplit = 'above'
+let g:ConqueGdb_SrcSplit = 'left'
 "儲存歷史
 let g:ConqueGdb_SaveHistory = 1
 "修改Conque GDB的Leader鍵
@@ -555,7 +555,7 @@ let g:ConqueTerm_Color = 2
 let g:ConqueTerm_CloseOnEnd = 1
 "Conque Term配置錯誤時顯示警告資訊
 let g:ConqueTerm_StartMessages = 0
-let g:ConqueGdb_GdbExe = '/home/erihsi/git/dev1/src/chk/bs_br/output/host/bin/aarch64-linux-gdb'
+let g:ConqueGdb_GdbExe = 'aarch64-linux-gdb'
 nnoremap \g  :ConqueGdb -q -x debugOCD.gdb <CR>
 
 "Keyboard Mapping	Function
