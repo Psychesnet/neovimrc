@@ -17,7 +17,7 @@ if [ "$(uname)" = "Darwin" ]; then
     gem environment
 else
     echo "This maybe be Linux"
-    sudo apt-get install build-essentail vim \
+    sudo apt-get install build-essential vim \
         net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark
 fi
 
