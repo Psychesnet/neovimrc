@@ -17,7 +17,7 @@ if [ "$(uname)" = "Darwin" ]; then
     gem environment
 else
     echo "This maybe be Linux"
-    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags \
+    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags python-dev \
         net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark
 fi
 
