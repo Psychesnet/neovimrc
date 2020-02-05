@@ -6,6 +6,10 @@ alias vimdiff='nvim -d'
 # log ssl key
 export SSLKEYLOGFILE=~/.ssl-key.log
 
+# gstreamer pkg
+export PATH=$PATH:/Library/Frameworks/GStreamer.framework/Versions/1.0/bin
+
+
 function ntfs() {
     sudo umount /Volumes/$2
     sudo mkdir /Volumes/$2
