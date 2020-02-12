@@ -1,4 +1,3 @@
-export LANG=zh_TW.UTF-8
 alias wgets='wget --no-check-certificate'
 alias pi='picocom -b 1500000 /dev/tty.usbserial-FT2SRPNZ'
 alias vimdiff='nvim -d'
