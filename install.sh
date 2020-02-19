@@ -4,9 +4,9 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "This is mac os x, maybe need to run xcode-select --install first"
     brew install neovim node
     brew install the_silver_searcher
-    brew install dbus
+    brew install dbus ctags git
     brew services start dbus
-    brew install cmake
+    brew install cmake screen python3
     # py3
     pip3 install neovim pyvim pynvim
     # node.js
