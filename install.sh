@@ -6,7 +6,7 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install the_silver_searcher
     brew install dbus ctags git
     brew services start dbus
-    brew install cmake screen python3
+    brew install cmake screen python3 curl ffmpeg wget
     # py3
     pip3 install neovim pyvim pynvim
     # node.js

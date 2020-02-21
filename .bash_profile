@@ -13,6 +13,8 @@ export PATH=$PATH:/Library/Frameworks/GStreamer.framework/Versions/1.0/bin
 export PATH="/usr/local/opt/e2fsprogs/bin:$PATH"
 export PATH="/usr/local/opt/e2fsprogs/sbin:$PATH"
 
+# python 2.7.10
+export PATH="/usr/local/bin:$PATH"
 
 function ntfs() {
     sudo umount /Volumes/$2
@@ -30,3 +32,9 @@ function ext4() {
 function dirdiff() {
     nvim -c "DirDiff $1 $2"
 }
+
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
