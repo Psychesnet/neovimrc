@@ -17,8 +17,22 @@ if [ "$(uname)" = "Darwin" ]; then
     gem environment
 else
     echo "This maybe be Linux"
+    sudo apt-get install software-properties-common
+    # neovim
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    # python3.6
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt-get update
     sudo apt-get install build-essential neovim curl screen tig exuberant-ctags python-dev \
-        net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark
+        net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.6 python3-pip \
+	nodejs nodejs-legacy npm ruby ruby-dev
+    # py3
+    pip3 install neovim pyvim pynvim
+    # node.js
+    sudo npm install -g yarn neovim
+    # ruby
+    sudo gem install neovim
+    gem environment
 fi
 
 ln -sf $(pwd)/init.vim ~/.vimrc
