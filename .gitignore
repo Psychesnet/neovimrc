@@ -5,6 +5,9 @@
 .vim/cache/
 .vim/.netrwhist
 .config/configstore/
+.config/Ambarella/
+.config/htop/
+.config/wireshark/
 .DS_store
 .ssh/id_rsa
 .ssh/id_rsa.pub

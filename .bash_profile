@@ -1,7 +1,8 @@
 alias wgets='wget --no-check-certificate'
 alias pi='picocom -b 1500000 /dev/tty.usbserial-FT2SRPNZ'
 alias vimdiff='nvim -d'
-alias grep='grep --color'
+alias grep='grep --color --exclude=tags'
+alias pi='picocom -b 115200 /dev/tty.usbmodemE00710091'
 
 # log ssl key
 export SSLKEYLOGFILE=~/.ssl-key.log

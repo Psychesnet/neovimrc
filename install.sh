@@ -36,6 +36,7 @@ else
 fi
 
 ln -sf $(pwd)/init.vim ~/.vimrc
+ln -sf $(pwd)/.xvimrc ~/.xvimrc
 ln -sf $(pwd)/.inputrc ~/.inputrc
 ln -sf $(pwd)/.bash_profile ~/.bash_profile
 ln -sf $(pwd)/.kermrc ~/.kermrc

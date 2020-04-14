@@ -1,0 +1,12 @@
+" ~/.xvimrc - Read by the XVim plugin for Xcode.
+set clipboard=unnamed
+set ignorecase
+set smartcase
+set nowrap
+set wrapscan
+
+nmap Y y$
+nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
+
+" Navigation
+nmap z, :xcmenucmd Open Quickly...<CR>
