@@ -297,7 +297,7 @@ defnonblock on
   bindkey "[1;2A" screen
 
 # ... and make them better.
-  bind 'K' kill
+  bind 'k' kill
   bind 'I' login on
   bind 'O' login off
   bind '}' history

@@ -1,8 +1,6 @@
 alias wgets='wget --no-check-certificate'
-alias pi='picocom -b 1500000 /dev/tty.usbserial-FT2SRPNZ'
 alias vimdiff='nvim -d'
 alias grep='grep --color --exclude=tags'
-alias pi='picocom -b 115200 /dev/tty.usbmodemE00710091'
 
 # log ssl key
 export SSLKEYLOGFILE=~/.ssl-key.log
@@ -23,6 +21,10 @@ function ntfs() {
     sudo mount -o rw,auto,nobrowse -t ntfs /dev/$1 /Volumes/$2
 }
 
+function apfs() {
+    sudo mount -t hfsplus -o remount,force,rw $1
+}
+
 function ext4() {
 	[ "$1" = "" ] && echo "ext4 disk3s1" && exit
 	sudo umount /Volumes/Transcend
@@ -34,8 +36,15 @@ function dirdiff() {
     nvim -c "DirDiff $1 $2"
 }
 
+function pi() {
+    [ -c "/dev/tty.usbmodemE00710091" ] && alias pi='picocom -b 115200 /dev/tty.usbmodemE00710091'
+    [ -c "/dev/ttyACM0" ] && alias sf='picocom -b 115200 /dev/ttyACM0'
+    [ -c "/dev/ttyUSB0" ] && alias s6lm='picocom -b 115200 /dev/ttyUSB0'
+}
+
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
+
