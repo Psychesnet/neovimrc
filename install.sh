@@ -12,6 +12,7 @@ if [ "$(uname)" = "Darwin" ]; then
     # node.js
     npm install -g yarn
     npm install -g neovim
+    npm install -g ungit
     # ruby
     gem install neovim
     gem environment
@@ -30,6 +31,7 @@ else
     pip3 install neovim pyvim pynvim
     # node.js
     sudo npm install -g yarn neovim
+    sudo npm install -g ungit
     # ruby
     sudo gem install neovim
     gem environment
