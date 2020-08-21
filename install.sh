@@ -44,6 +44,7 @@ ln -sf $(pwd)/.bash_profile ~/.bash_profile
 ln -sf $(pwd)/.kermrc ~/.kermrc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/debugOCD.gdb ~/debugOCD.gdb
 # for screen
 ln -sf $(pwd)/.screenrc ~/.screenrc
 ln -s ~/.bash_profile ~/.bashrc

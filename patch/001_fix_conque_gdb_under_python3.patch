@@ -1,0 +1,19 @@
+diff --git a/autoload/conque_gdb/conque_gdb.py b/autoload/conque_gdb/conque_gdb.py
+index c54e3c8..fda5c63 100644
+--- a/autoload/conque_gdb/conque_gdb.py
++++ b/autoload/conque_gdb/conque_gdb.py
+@@ -1,4 +1,4 @@
+-import re, collections
++import re, collections.abc
+ 
+ # Marks that a breakpoint has been hit
+ GDB_BREAK_MARK = '\x1a\x1a'
+@@ -36,7 +36,7 @@ class RegisteredBreakpoint:
+     def __str__(self):
+         return self.filename + ':' + self.lineno + ',' + self.enabled
+ 
+-class RegisteredBpDict(collections.MutableMapping):
++class RegisteredBpDict(collections.abc.MutableMapping):
+     def __init__(self):
+         self.r_breaks = dict()
+         self.lookups = dict()

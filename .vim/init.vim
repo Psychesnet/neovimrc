@@ -108,7 +108,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'vim-scripts/taglist.vim'
 
 " debugger
-" Plug 'vim-scripts/Conque-GDB'
+Plug 'vim-scripts/Conque-GDB'
 
 " fuzzy open file
 Plug 'Yggdroot/LeaderF'
@@ -558,25 +558,25 @@ nmap <Leader>r <Plug>(quickrun)
 map <F10> :QuickRun<CR>
 
 "" ############## gdb ###############################
-""待除錯檔案位於螢幕上方
-"let g:ConqueGdb_SrcSplit = 'left'
-""儲存歷史
-"let g:ConqueGdb_SaveHistory = 1
-""修改Conque GDB的Leader鍵
-"let g:ConqueGdb_Leader = ';'
-""總是顯示顏色
-"let g:ConqueTerm_Color = 2
-""程式結束執行時，關閉Conque GDB視窗
-"let g:ConqueTerm_CloseOnEnd = 1
-""Conque Term配置錯誤時顯示警告資訊
-"let g:ConqueTerm_StartMessages = 0
-"let g:ConqueGdb_GdbExe = 'aarch64-linux-gdb'
+"待除錯檔案位於螢幕上方
+let g:ConqueGdb_SrcSplit = 'left'
+"儲存歷史
+let g:ConqueGdb_SaveHistory = 1
+"修改Conque GDB的Leader鍵
+let g:ConqueGdb_Leader = ';'
+"總是顯示顏色
+let g:ConqueTerm_Color = 2
+"程式結束執行時，關閉Conque GDB視窗
+let g:ConqueTerm_CloseOnEnd = 1
+"Conque Term配置錯誤時顯示警告資訊
+let g:ConqueTerm_StartMessages = 0
+let g:ConqueGdb_GdbExe = '/usr/local/linaro-aarch64-2017.08-gcc7.1/bin/aarch64-linux-gnu-gdb'
 
-"function! GdbAction()
-    "call NumberToggle()
-    "ConqueGdb -q -x debugOCD.gdb
-"endfunc
-"nnoremap \g  :call GdbAction() <CR>
+function! GdbAction()
+    call NumberToggle()
+    ConqueGdb -q
+endfunc
+nnoremap \g  :call GdbAction() <CR>
 
 "Keyboard Mapping	Function
 ";r	Run program
