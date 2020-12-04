@@ -14,7 +14,7 @@ if [ "$(uname)" = "Darwin" ]; then
     npm install -g neovim
     npm install -g ungit
     # ruby
-    gem install neovim
+    sudo gem install neovim
     gem environment
 else
     echo "This maybe be Linux"
