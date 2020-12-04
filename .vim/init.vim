@@ -293,6 +293,8 @@ set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
 set ttyfast
 set ttimeoutlen=10
+" support point and click on mouse moving
+set mouse=a
 
 " ================ Misc =============================
 
