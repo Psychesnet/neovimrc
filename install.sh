@@ -2,6 +2,7 @@
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "This is mac os x, maybe need to run xcode-select --install first"
+    brew install coreutils
     brew install neovim node
     brew install the_silver_searcher
     brew install dbus ctags git
@@ -15,7 +16,7 @@ if [ "$(uname)" = "Darwin" ]; then
     npm install -g ungit
     # ruby
     sudo gem install neovim
-    gem environment
+    sudo gem environment
 else
     echo "This maybe be Linux"
     sudo apt-get install software-properties-common

@@ -1,6 +1,8 @@
 alias wgets='wget --no-check-certificate'
 alias vimdiff='nvim -d'
+alias vi=nvim
 alias grep='grep --color --exclude=tags'
+alias pcl_viewer='/usr/local/Cellar/pcl/1.11.1_5/pcl_viewer.app/Contents/MacOS/pcl_viewer'
 
 # log ssl key
 export SSLKEYLOGFILE=~/.ssl-key.log
@@ -14,6 +16,9 @@ export PATH="/usr/local/opt/e2fsprogs/sbin:$PATH"
 
 # python 2.7.10
 export PATH="/usr/local/bin:$PATH"
+
+# eng env
+export LC_ALL=en_US.UTF-8
 
 function ntfs() {
     sudo umount /Volumes/$2
@@ -41,10 +46,4 @@ function pi() {
     [ -c "/dev/ttyACM0" ] && alias sf='picocom -b 115200 /dev/ttyACM0'
     [ -c "/dev/ttyUSB0" ] && alias s6lm='picocom -b 115200 /dev/ttyUSB0'
 }
-
-
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
 
