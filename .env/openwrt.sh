@@ -11,12 +11,12 @@ export GST_DEBUG="*:3"
 
 get() {
   [ ! $# -eq 1 ] && echo usage: get cgi && return
-  curl -k -u "${USER}:${PASSWD}" --anyauth -X GET "https://${IP}:${HTTPS_PORT}/adc-api/${1}"
+  curl -v -k -u "${USER}:${PASSWD}" --anyauth -X GET "https://${IP}:${HTTPS_PORT}/adc-api/${1}"
   echo
 }
 
 post() {
-  [ ! $# -eq 2 ] && echo usage: post file cgi && return
-  curl -k -u "${USER}:${PASSWD}" --anyauth -X POST -F upload=@${2} "https://${IP}:${HTTPS_PORT}/adc-api/${1}"
+  [ ! $# -eq 2 ] && echo usage: post cgi file && return
+  curl -v -k -u "${USER}:${PASSWD}" --anyauth -X POST -F upload=@${2} "https://${IP}:${HTTPS_PORT}/adc-api/${1}"
   echo
 }
