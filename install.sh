@@ -25,9 +25,9 @@ else
     # python3.6
     sudo add-apt-repository ppa:deadsnakes/ppa
     sudo apt-get update
-    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags python-dev \
+    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags python-dev-is-python3 \
         net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.6 python3-pip \
-	nodejs nodejs-legacy npm ruby ruby-dev
+	nodejs libnode64 ruby ruby-dev
     # py3
     pip3 install neovim pyvim pynvim
     # node.js
