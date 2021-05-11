@@ -80,7 +80,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/a.vim'
 
 " for python
-Plug 'kevinw/pyflakes-vim'
 "Plug 'vim-scripts/pydoc.vim'
 Plug 'hdima/python-syntax'
 
