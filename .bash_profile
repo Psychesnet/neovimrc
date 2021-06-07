@@ -18,6 +18,7 @@ export PATH="/usr/local/opt/e2fsprogs/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 # eng env
+export LANG="en_US"
 export LC_ALL=en_US.UTF-8
 
 function ntfs() {
