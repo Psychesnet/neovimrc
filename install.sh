@@ -1,4 +1,4 @@
-#!/bin/sh
+sh!/bin/sh
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "This is mac os x, maybe need to run xcode-select --install first"
@@ -25,9 +25,9 @@ else
     # python3.6
     sudo add-apt-repository ppa:deadsnakes/ppa
     sudo apt-get update
-    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags python-dev-is-python3 \
+    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags \
         net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.6 python3-pip \
-	nodejs libnode64 ruby ruby-dev
+	nodejs ruby ruby-dev
     # py3
     pip3 install neovim pyvim pynvim
     # node.js
@@ -38,7 +38,7 @@ else
     gem environment
 fi
 
-ln -sf $(pwd)/init.vim ~/.vimrc
+ln -sf $(pwd)/.vim/init.vim ~/.vimrc
 ln -sf $(pwd)/.xvimrc ~/.xvimrc
 ln -sf $(pwd)/.inputrc ~/.inputrc
 ln -sf $(pwd)/.bash_profile ~/.bash_profile
@@ -46,8 +46,6 @@ ln -sf $(pwd)/.kermrc ~/.kermrc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
 ln -sf $(pwd)/.env ~/.env
-ln -sf $(pwd)/env ~/env
-ln -sf $(pwd)/debugOCD.gdb ~/debugOCD.gdb
 # for screen
 ln -sf $(pwd)/.screenrc ~/.screenrc
 ln -s ~/.bash_profile ~/.bashrc
