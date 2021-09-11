@@ -21,6 +21,9 @@ export PATH="/usr/local/bin:$PATH"
 export LANG="en_US"
 export LC_ALL=en_US.UTF-8
 
+# git svn
+export PERL5LIB=/usr/local/opt/subversion/lib/perl5/site_perl/5.30.2/darwin-thread-multi-2level/:$PERL5LIB
+
 function ntfs() {
     sudo umount /Volumes/$2
     sudo mkdir /Volumes/$2

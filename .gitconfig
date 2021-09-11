@@ -6,6 +6,7 @@
 [core]
 	editor = vi
 	excludesfile = ~/.gitignore
+    fileMode = false
 [alias]
 	co = checkout
 	ci = commit
