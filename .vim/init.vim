@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'docunext/closetag.vim'
 
 " autocompletion (also a linter - diagnostics)
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 Plug 'Shougo/echodoc.vim'
 
 " ale - linter / autocompletion / formatter
@@ -403,7 +403,7 @@ map ,us :UltiSnipsEdit<CR>
 
 " ################ YouCompleteMe ####################
 
-let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_add_preview_to_completeopt = 0

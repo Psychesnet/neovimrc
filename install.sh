@@ -1,4 +1,4 @@
-sh!/bin/sh
+#!/bin/sh
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "This is mac os x, maybe need to run xcode-select --install first"
