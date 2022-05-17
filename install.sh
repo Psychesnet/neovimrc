@@ -22,11 +22,11 @@ else
     sudo apt-get install software-properties-common
     # neovim
     sudo add-apt-repository ppa:neovim-ppa/unstable
-    # python3.6
+    # python3.8
     sudo add-apt-repository ppa:deadsnakes/ppa
     sudo apt-get update
     sudo apt-get install build-essential neovim curl screen tig exuberant-ctags \
-        net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.6 python3-pip \
+        net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.8 python3-pip \
 	nodejs ruby ruby-dev
     # py3
     pip3 install neovim pyvim pynvim
