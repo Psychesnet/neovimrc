@@ -6,6 +6,7 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install neovim node
     brew install the_silver_searcher
     brew install dbus ctags git
+    brew install lua
     brew services start dbus
     brew install cmake screen python3 curl ffmpeg wget
     # py3
@@ -27,7 +28,7 @@ else
     sudo apt-get update
     sudo apt-get install build-essential neovim curl screen tig exuberant-ctags \
         net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.8 python3-pip \
-	nodejs ruby ruby-dev
+	    nodejs ruby ruby-dev lua
     # py3
     pip3 install neovim pyvim pynvim
     # node.js
