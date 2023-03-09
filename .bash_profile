@@ -19,6 +19,9 @@ export PATH="/usr/local/opt/e2fsprogs/sbin:$PATH"
 # python 2.7.10
 export PATH="/usr/local/bin:$PATH"
 
+# stm32
+export PATH="$PATH:/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.macos64_2.0.200.202202231230/tools/bin"
+
 # eng env
 export LANG="en_US"
 export LC_ALL=en_US.UTF-8
@@ -32,6 +35,9 @@ alias zz='z -c' # 严格匹配当前路径的子路径
 alias zi='z -i' # 使用交互式选择模式
 alias zf='z -I' # 使用 fzf 对多个结果进行选择
 alias zb='z -b' # 快速回到父目录
+
+# gnu arm gcc
+export PATH=$PATH:/Applications/ARM/bin
 
 function ntfs() {
     sudo umount /Volumes/$2
