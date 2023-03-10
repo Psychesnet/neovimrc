@@ -7,6 +7,7 @@
 	editor = vi
 	excludesfile = ~/.gitignore
     fileMode = false
+	autocrlf = false
 [alias]
 	co = checkout
 	ci = commit
@@ -15,10 +16,5 @@
 	df = diff --cached
 	info = config --list
 	ut = ls-files --others --exclude-standard
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
  [receive]
     denyCurrentBranch = ignore
