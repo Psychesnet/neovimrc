@@ -13,12 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'docunext/closetag.vim'
 
 " autocompletion (also a linter - diagnostics)
-"Plug 'github/copilot.vim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-"Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 Plug 'Shougo/echodoc.vim'
 
 " ale - linter / autocompletion / formatter
@@ -53,8 +48,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
 
 " airline (powerline)
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " enhanced highlight
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -136,6 +131,7 @@ call plug#end()
 set path+=**
 set wildmenu
 set showcmd
+set mouse=
 
 " ================ File management ==================
 
@@ -405,6 +401,43 @@ let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
 let g:UltiSnipsUsePythonVersion = 3
 " 进入对应filetype的snippets进行编辑
 map ,us :UltiSnipsEdit<CR>
+
+" ################ YouCompleteMe ####################
+
+ let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+ let g:ycm_key_list_select_completion = ['<Down>']
+ let g:ycm_key_list_previous_completion = ['<Up>']
+ let g:ycm_add_preview_to_completeopt = 0
+ let g:ycm_use_ultisnips_completer = 1
+ let g:ycm_show_diagnostics_ui = 0
+ let g:ycm_min_num_identifier_candidate_chars = 2
+ let g:ycm_collect_identifiers_from_comments_and_strings = 1
+ let g:ycm_collect_identifiers_from_tags_files = 1
+ let g:ycm_autoclose_preview_window_after_completion=1
+ let g:ycm_complete_in_strings=1
+ set completeopt=menu,menuone
+
+ " 对指定源文件，输入两个字母后即触发语义补全
+ let g:ycm_semantic_triggers =  {
+             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+             \ 'cs,lua,javascript': ['re!\w{2}'],
+             \ }
+
+ let g:ycm_filetype_whitelist = {
+             \ "c":1,
+             \ "cpp":1,
+             \ "python":1,
+             \ "sh":1,
+             \ "zsh":1,
+             \ }
+
+ let g:ycm_filetype_blacklist = {
+             \ 'markdown' : 1,
+             \ 'text' : 1,
+             \ 'pandoc' : 1,
+             \ 'infolog' : 1,
+             \}
+
 
 " ################ echodoc ##########################
 set cmdheight=2
