@@ -97,7 +97,6 @@ def GetCompilationInfoForFile( filename ):
 # a file.
 def Settings( **kwargs ):
   flags.append('-isystem')
-  flags.append(os.environ['PRO_INC_PATH'])
   if not database:
     return {
       'flags': flags,
