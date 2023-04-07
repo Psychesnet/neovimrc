@@ -1,5 +1,5 @@
-" (_)_ __ (_) |___   _(_)_ __ ___
-" | | '_ \| | __\ \ / / | '_ ` _ \
+        " (_)_ __ (_) |___   _(_)_ __ ___
+    " | | '_ \| | __\ \ / / | '_ ` _ \
 " | | | | | | |_ \ V /| | | | | | |
 " |_|_| |_|_|\__(_)_/ |_|_| |_| |_|
 
@@ -23,7 +23,7 @@ Plug 'hrsh7th/vim-vsnip'
 " 自動填<>
 Plug 'docunext/closetag.vim'
 
-" C/C++ 格式排列
+" auto formatter
 Plug 'rhysd/vim-clang-format'
 
 " nerd tree
