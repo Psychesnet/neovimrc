@@ -9,39 +9,37 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes ''
 
-" auto create tag
+" lang service
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+" 自動填<>
 Plug 'docunext/closetag.vim'
 
-" autocompletion (also a linter - diagnostics)
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
-Plug 'Shougo/echodoc.vim'
-
-" ale - linter / autocompletion / formatter
-Plug 'w0rp/ale'
-
-" auto formatter
+" C/C++ 格式排列
 Plug 'rhysd/vim-clang-format'
 
 " nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jistr/vim-nerdtree-tabs'
 
-" quick compiler
-Plug 'thinca/vim-quickrun'
-
-" surround vim
+" 自動填(
 Plug 'tpope/vim-surround'
 
-" auto repeat
+" 自動補"
 Plug 'tpope/vim-repeat'
 
-" auto remove space at the end of line
+" 移除尾部空白
 Plug 'bronson/vim-trailing-whitespace'
 
-" auto format
-Plug 'Chiel92/vim-autoformat'
-
-" multiple cursors
+" 多種選法修改
 Plug 'terryma/vim-multiple-cursors'
 
 " nerd commenter
@@ -57,10 +55,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " good to search
 Plug 'rking/ag.vim'
 
-" quickfix
-Plug 'Valloric/ListToggle'
-
-" slumlord
+" UML
 Plug 'scrooloose/vim-slumlord'
 
 " ctags indexer
@@ -80,26 +75,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/a.vim'
 
 " for python
-"Plug 'vim-scripts/pydoc.vim'
 Plug 'hdima/python-syntax'
-
-" colorscheme
-Plug 'matveyt/vim-modest'
-Plug 'morhetz/gruvbox'
-
-" auto-close (for parenthesis)
-" TODO: broken, since clang_complete
-"Plug 'jiangmiao/auto-pairs'
-
-" ctrlp
-" TODO: learn
-" Plug 'kien/ctrlp.vim'
 
 " glsl color
 Plug 'tikhomirov/vim-glsl'
 
 " git ++
-Plug 'mhinz/vim-signify'
 Plug 'iberianpig/tig-explorer.vim'
 Plug 'rbgrouleff/bclose.vim'
 
@@ -176,16 +157,6 @@ set fileencoding=utf-8
 " 修改leader键
 let mapleader = ','
 let g:mapleader = ','
-
-" clipboard
-" copy
-"noremap <C-c> "+y
-"" paste
-"noremap <C-v> "+p
-"" cut
-"noremap <C-x> "+d
-"" paste in insert mode
-"inoremap <C-v> <Esc>"+pa
 
 " ================ Visualization ====================
 
@@ -285,6 +256,7 @@ endfun
 
 " ================ Performance ======================
 
+set mouse=
 " fix slow scrolling that occurs when using mouse and relative numbers
 set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
@@ -387,81 +359,6 @@ nmap <Leader>t :TlistToggle<CR>
 let g:Tlist_GainFocus_On_ToggleOpen= 1
 " let g:Tlist_Ctags_Cmd = '~/git/ctags-5.8/ctags'
 
-" ################ UltiSnips ########################
-
-" make a dir Ultisnips in: '~/.config/nvim/UltiSnips/'
-" and put your snippets in there
-" eg. cpp.snippets
-
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<up>"
-let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
-let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
-let g:UltiSnipsUsePythonVersion = 3
-" 进入对应filetype的snippets进行编辑
-map ,us :UltiSnipsEdit<CR>
-
-" ################ YouCompleteMe ####################
-
- let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
- let g:ycm_key_list_select_completion = ['<Down>']
- let g:ycm_key_list_previous_completion = ['<Up>']
- let g:ycm_add_preview_to_completeopt = 0
- let g:ycm_use_ultisnips_completer = 1
- let g:ycm_show_diagnostics_ui = 0
- let g:ycm_min_num_identifier_candidate_chars = 2
- let g:ycm_collect_identifiers_from_comments_and_strings = 1
- let g:ycm_collect_identifiers_from_tags_files = 1
- let g:ycm_autoclose_preview_window_after_completion=1
- let g:ycm_complete_in_strings=1
- set completeopt=menu,menuone
-
- " 对指定源文件，输入两个字母后即触发语义补全
- let g:ycm_semantic_triggers =  {
-             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-             \ 'cs,lua,javascript': ['re!\w{2}'],
-             \ }
-
- let g:ycm_filetype_whitelist = {
-             \ "c":1,
-             \ "cpp":1,
-             \ "python":1,
-             \ "sh":1,
-             \ "zsh":1,
-             \ }
-
- let g:ycm_filetype_blacklist = {
-             \ 'markdown' : 1,
-             \ 'text' : 1,
-             \ 'pandoc' : 1,
-             \ 'infolog' : 1,
-             \}
-
-
-" ################ echodoc ##########################
-set cmdheight=2
-let g:echodoc_enable_at_startup = 1
-
-" ################ Ale ##############################
-
-" autocompletion
-let g:ale_completion_enabled = 1
-
-let g:ale_cpp_clang_executable = 'clang++-5.0'
-
-" linter
-let g:ale_linters = {
-            \   'cpp': ['clang']
-            \}
-let g:ale_cpp_clang_options = '-std=c++1z -O0 -Wextra -Wall -Wpedantic -I /usr/include/eigen3'
-"let g:ale_cpp_clangtidy_options = '-checks="cppcoreguidelines-*"'
-"let g:ale_cpp_cpplint_options = ''
-"let g:ale_cpp_gcc_options = ''
-"let g:ale_cpp_clangcheck_options = ''
-"let g:ale_cpp_cppcheck_options = ''
-
-
 " ################ Clang format #####################
 
 " Clang format - auto formatting
@@ -477,14 +374,8 @@ let g:clang_format#style_options = {
             \ "AllowShortFunctionsOnASingleLine" : "false",
             \}
 
-" shortcuts for autoformatting the entire file: Ctrl+j
-inoremap <C-j> <Esc>:ClangFormat<CR>a
-nnoremap <C-j> <Esc>:ClangFormat<CR>
-
-" ################ auto format ######################
-noremap <leader>i :Autoformat<CR>
-let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
-let g:formatters_python = ['autopep8']
+" Toggle auto formatting:
+autocmd FileType c,cpp ClangFormatAutoEnable
 
 " ################ multiple cursor #################
 let g:multi_cursor_use_default_mapping=0
@@ -493,10 +384,6 @@ let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
-
-" ################ listToggle #######################
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " ################ Easymotion #######################
 let g:EasyMotion_smartcase = 1
@@ -519,6 +406,21 @@ let g:indexer_disableCtagsWarning = 1
 " TODO: add (cmake) project support
 " TODO: add debugger support
 
+" ################ UltiSnips ########################
+
+" make a dir Ultisnips in: '~/.config/nvim/UltiSnips/'
+" and put your snippets in there
+" eg. cpp.snippets
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<up>"
+let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
+let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
+let g:UltiSnipsUsePythonVersion = 3
+" 进入对应filetype的snippets进行编辑
+map ,us :UltiSnipsEdit<CR>
+
 " ################ AG ###############################
 " window size
 let g:ag_qhandler="copen 40"
@@ -537,23 +439,6 @@ let g:closetag_html_style=1
 
 " ############### vim-trailing-whitespace ###########
 map <leader><space> :FixWhitespace<cr>
-
-" ############### quick run #########################
-let g:quickrun_config = {
-            \   "_" : {
-            \       "outputter" : "message",
-            \   },
-            \}
-
-let g:quickrun_config['plantuml'] = {
-            \  'command': 'plantuml'
-            \, 'exec': ['%c %s', 'open %s:p:r.png']
-            \, 'outputter': 'null'
-            \}
-
-let g:quickrun_no_default_key_mappings = 1
-nmap <Leader>r <Plug>(quickrun)
-map <F10> :QuickRun<CR>
 
 " ############# git ################################
 " open tig with Project root path
@@ -585,7 +470,7 @@ let g:vinarise_enable_auto_detect = 0
 
 " ################# Src Extend ####################
 " // Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 100
+let g:SrcExpl_winHeight = 70
 
 " // Set 100 ms for refreshing the Source Explorer
 let g:SrcExpl_refreshTime = 100
@@ -594,7 +479,7 @@ let g:SrcExpl_refreshTime = 100
 let g:SrcExpl_jumpKey = "<ENTER>"
 
 " // Set "Space" key for back from the definition context
-let g:SrcExpl_gobackKey = "<NONE>"
+let g:SrcExpl_gobackKey = "<SPACE>"
 
 " // In order to avoid conflicts, the Source Explorer should know what plugins except
 " // itself are using buffers. And you need add their buffer names into below list
@@ -632,5 +517,12 @@ let g:SrcExpl_isUpdateTags = 0
 " // create/update the tags file
 let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 
+" // Set "<F3>" key for displaying the previous definition in the jump list
+let g:SrcExpl_prevDefKey = "<F3>"
+
+" // Set "<F4>" key for displaying the next definition in the jump list
+let g:SrcExpl_nextDefKey = "<F4>"
+
 " ##################### trinity ######################
 nmap <leader>e  :TrinityToggleAll<CR>
+
