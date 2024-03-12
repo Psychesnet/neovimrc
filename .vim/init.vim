@@ -162,7 +162,7 @@ let g:mapleader = ','
 
 syntax on
 set background=light
-"colorscheme gruvbox
+colorscheme gruvbox
 hi DiffAdd cterm=NONE gui=NONE ctermfg=2 guifg=#719e07 ctermbg=7 guibg=#eee8d5
 hi DiffChange cterm=NONE gui=NONE ctermfg=3 guifg=#b58900 ctermbg=7 guibg=#eee8d5
 hi DiffDelete cterm=NONE gui=NONE ctermfg=1 guifg=#dc322f ctermbg=7 guibg=#eee8d5
