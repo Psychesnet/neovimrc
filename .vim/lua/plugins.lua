@@ -1,179 +1,45 @@
-        " (_)_ __ (_) |___   _(_)_ __ ___
-    " | | '_ \| | __\ \ / / | '_ ` _ \
-" | | | | | | |_ \ V /| | | | | | |
-" |_|_| |_|_|\__(_)_/ |_|_| |_| |_|
+local fn = vim.fn
+local api = vim.api
 
-" ==================== VIM PLUG ==================
+-- Automatically install packer
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	PACKER_BOOTSTRAP = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+	print("Installing packer close and reopen Neovim...")
+	vim.cmd([[packadd packer.nvim]])
+end
 
-call plug#begin('~/.vim/plugged')
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
 
-" Make sure you use single quotes ''
-
-" lang service
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-" 自動填<>
-Plug 'docunext/closetag.vim'
-
-" auto formatter
-Plug 'rhysd/vim-clang-format'
-
-" nerd tree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs'
-
-" 自動填(
-Plug 'tpope/vim-surround'
-
-" 自動補"
-Plug 'tpope/vim-repeat'
-
-" 移除尾部空白
-Plug 'bronson/vim-trailing-whitespace'
-
-" 多種選法修改
-Plug 'terryma/vim-multiple-cursors'
-
-" nerd commenter
-Plug 'scrooloose/nerdcommenter'
-
-" airline (powerline)
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" enhanced highlight
-Plug 'octol/vim-cpp-enhanced-highlight'
-
-" good to search
-Plug 'rking/ag.vim'
-
-" UML
-Plug 'scrooloose/vim-slumlord'
-
-" ctags indexer
-Plug 'vim-scripts/DfrankUtil'
-Plug 'vim-scripts/vimprj'
-Plug 'vim-scripts/indexer.tar.gz'
-
-" UltiSnips
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" easy motion
-Plug 'Raimondi/delimitMate'
-Plug 'easymotion/vim-easymotion'
-
-" A - for switching between source and header files
-Plug 'vim-scripts/a.vim'
-
-" for python
-Plug 'hdima/python-syntax'
-
-" glsl color
-Plug 'tikhomirov/vim-glsl'
-
-" git ++
-Plug 'iberianpig/tig-explorer.vim'
-Plug 'rbgrouleff/bclose.vim'
-
-" show function
-Plug 'vim-scripts/taglist.vim'
-
-" fuzzy open file
-Plug 'Yggdroot/LeaderF'
-
-" supertab for pop mapping
-Plug 'ervandew/supertab'
-
-" dir diff
-Plug 'will133/vim-dirdiff'
-
-" hexedit
-Plug 'Shougo/vinarise.vim'
-
-" extend source
-Plug 'Psychesnet/SrcExpl'
-Plug 'Psychesnet/Trinity'
-
-call plug#end()
-
-
-" ================ Suggestions ======================
-
-" show wild menu (menu of suggestions) when typing commands in command mode
-set path+=**
+-- my setting
+vim.cmd([[
 set wildmenu
 set showcmd
 set mouse=
-
-" ================ File management ==================
-
-" Turn off swap files
 set noswapfile
 set nobackup
 set nowb
-
-" TODO: improve behaviour
-" reload files changed outside vim
 set autoread
-" Triger `autoread` when files changes on disk
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-" Notification after file change
-autocmd FileChangedShellPost *
-            \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-
-" ================ Folds ============================
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
-
-" ================ Srolling =========================
-
-" Start scrolling when we're 8 lines away from margins
-set scrolloff=8
-
-" auto wrap
 set wrap
-
-" ================ Encoding =========================
 set encoding=utf-8
 set fileencodings=utf-8,cp950
 set fileencoding=utf-8
-
-" ================ Keyboard bindings ================
-
-" noremap - no recursive mapping
-" 修改leader键
 let mapleader = ','
 let g:mapleader = ','
-
-" ================ Visualization ====================
-
 syntax on
-set background=light
-colorscheme gruvbox
-hi DiffAdd cterm=NONE gui=NONE ctermfg=2 guifg=#719e07 ctermbg=7 guibg=#eee8d5
-hi DiffChange cterm=NONE gui=NONE ctermfg=3 guifg=#b58900 ctermbg=7 guibg=#eee8d5
-hi DiffDelete cterm=NONE gui=NONE ctermfg=1 guifg=#dc322f ctermbg=7 guibg=#eee8d5
-hi DiffText cterm=NONE gui=NONE ctermfg=4 guifg=#268bd2 ctermbg=7 guibg=#eee8d5
-hi Directory cterm=NONE gui=NONE ctermfg=4 guifg=#268bd2 ctermbg=NONE guibg=NONE
-
-" enable 256bit colors - also: override gnome-terminal's settings
-"set t_Co=256
-
-" ================ Indentation ======================
-
 set autoindent
 set smartindent
 set shiftwidth=4
@@ -181,27 +47,6 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set smarttab
-
-" ================ Number column ====================
-
-" numbers
-"set number " see the line number column
-
-" Toggle relative numbering, and set to absolute on loss of focus or insert mode
-"autocmd InsertEnter * :set nornu
-"autocmd InsertLeave * :set rnu
-"" we don't want to see relative numbering while debugging
-"" debugger uses its own window, so we can disable rnu when source window loses
-"" focus
-"autocmd BufLeave * :set nornu
-"autocmd BufEnter * call SetRNU()
-"function! SetRNU()
-"if(mode()!='i')
-"set rnu
-"endif
-"endfunction
-
-
 " ================ Searching ========================
 
 nmap <Leader>c :!ctags -R --exclude=.git --fields=+l . <CR>
@@ -255,8 +100,6 @@ fun! ToggleFold()
 endfun
 
 " ================ Performance ======================
-
-set mouse=
 " fix slow scrolling that occurs when using mouse and relative numbers
 set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
@@ -406,21 +249,6 @@ let g:indexer_disableCtagsWarning = 1
 " TODO: add (cmake) project support
 " TODO: add debugger support
 
-" ################ UltiSnips ########################
-
-" make a dir Ultisnips in: '~/.config/nvim/UltiSnips/'
-" and put your snippets in there
-" eg. cpp.snippets
-
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<up>"
-let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
-let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
-let g:UltiSnipsUsePythonVersion = 3
-" 进入对应filetype的snippets进行编辑
-map ,us :UltiSnipsEdit<CR>
-
 " ################ AG ###############################
 " window size
 let g:ag_qhandler="copen 40"
@@ -444,26 +272,9 @@ map <leader><space> :FixWhitespace<cr>
 " open tig with Project root path
 nnoremap <Leader>g :TigOpenProjectRootDir<CR>
 
-" ############### leaderF #########################
-let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_ShortcutB = '<m-n>'
-noremap <c-n> :LeaderfMru<cr>
-noremap <m-p> :LeaderfFunction!<cr>
-noremap <m-n> :LeaderfBuffer<cr>
-noremap <m-m> :LeaderfTag<cr>
-let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-
-let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-let g:Lf_WorkingDirectoryMode = 'Ac'
-let g:Lf_WindowHeight = 0.30
-let g:Lf_CacheDirectory = expand('~/.vim/cache')
-let g:Lf_ShowRelativePath = 0
-let g:Lf_HideHelp = 1
-let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
-
 " ################## supertab ######################
-let g:SuperTabMappingForeward="<S-Tab>"
+"let g:SuperTabMappingForeward="<S-Tab>"
+"let g:SuperTabRetainCompletionType=2
 
 " ################## vinarise ######################
 let g:vinarise_enable_auto_detect = 0
@@ -525,4 +336,84 @@ let g:SrcExpl_nextDefKey = "<F4>"
 
 " ##################### trinity ######################
 nmap <leader>e  :TrinityToggleAll<CR>
+
+]])
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+	return
+end
+
+-- Have packer use a popup window
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
+})
+
+-- Install your plugins here
+return packer.startup(function(use)
+	use ("wbthomason/packer.nvim") -- Have packer manage itself	
+
+	-- autocompletion
+	use("hrsh7th/nvim-cmp") -- completion plugin
+	use("hrsh7th/cmp-buffer") -- source for text in buffer
+	use("hrsh7th/cmp-path") -- source for file system paths
+	-- snippets
+	use("L3MON4D3/LuaSnip") -- snippet engine
+	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+	use("rafamadriz/friendly-snippets") -- useful snippets
+	-- auto formatter
+	use("rhysd/vim-clang-format")
+	-- nerd tree
+	use('scrooloose/nerdtree')
+	use('jistr/vim-nerdtree-tabs')
+	-- auto fill <>,(,"
+	use('docunext/closetag.vim')
+	use('tpope/vim-surround')
+	use('tpope/vim-repeat')
+	-- 移除尾部空白
+	use('bronson/vim-trailing-whitespace')
+	-- 多種選法修改
+	use('terryma/vim-multiple-cursors')
+	-- nerd commenter
+	use('scrooloose/nerdcommenter')
+	-- airline (powerline)
+	use('vim-airline/vim-airline')
+	use('vim-airline/vim-airline-themes')
+	-- enhanced highlight
+	use('octol/vim-cpp-enhanced-highlight')
+	-- good to search
+	use('rking/ag.vim')
+	-- ctags indexer
+	use('vim-scripts/DfrankUtil')
+	use('vim-scripts/vimprj')
+	use('vim-scripts/indexer.tar.gz')
+	-- easy motion
+	use('Raimondi/delimitMate')
+	use('easymotion/vim-easymotion')
+	-- A - for switching between source and header files
+	use('vim-scripts/a.vim')
+	-- git ++
+	use('iberianpig/tig-explorer.vim')
+	use('rbgrouleff/bclose.vim')
+	-- show function
+	use('vim-scripts/taglist.vim')
+	-- supertab for pop mapping
+	use('ervandew/supertab')
+	-- dir diff
+	use('will133/vim-dirdiff')
+	-- hexedit
+	use('Shougo/vinarise.vim')
+	-- extend source
+	use('Psychesnet/SrcExpl')
+	use('Psychesnet/Trinity')
+
+	if PACKER_BOOTSTRAP then
+		require("packer").sync()
+	end
+end)
 
