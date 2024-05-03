@@ -339,6 +339,9 @@ nmap <leader>e  :TrinityToggleAll<CR>
 
 ]])
 
+vim.o.background = "light" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -411,6 +414,8 @@ return packer.startup(function(use)
 	-- extend source
 	use('Psychesnet/SrcExpl')
 	use('Psychesnet/Trinity')
+    -- colorscheme
+    use("ellisonleao/gruvbox.nvim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
