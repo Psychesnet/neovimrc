@@ -70,6 +70,7 @@ set ruler        " 顯示右下角設定值
 set ic           " 設定搜尋無識大小寫
 set ru           " 第幾行第幾個字
 highlight Search term=reverse ctermbg=green ctermfg=black
+hi Identifier ctermfg=blue cterm=bold
 
 set confirm      " 操作過程有衝突時，以明確的文字來詢問
 "set cursorline   " 顯示目前的游標位置
@@ -273,8 +274,8 @@ map <leader><space> :FixWhitespace<cr>
 nnoremap <Leader>g :TigOpenProjectRootDir<CR>
 
 " ################## supertab ######################
-"let g:SuperTabMappingForeward="<S-Tab>"
-"let g:SuperTabRetainCompletionType=2
+let g:SuperTabMappingForeward="<S-Tab>"
+let g:SuperTabRetainCompletionType=2
 
 " ################## vinarise ######################
 let g:vinarise_enable_auto_detect = 0
@@ -340,7 +341,10 @@ nmap <leader>e  :TrinityToggleAll<CR>
 ]])
 
 vim.o.background = "light" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[
+colorscheme gruvbox
+let g:gruvbox_bold = 1
+]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -362,13 +366,7 @@ return packer.startup(function(use)
 	use ("wbthomason/packer.nvim") -- Have packer manage itself	
 
 	-- autocompletion
-	use("hrsh7th/nvim-cmp") -- completion plugin
-	use("hrsh7th/cmp-buffer") -- source for text in buffer
-	use("hrsh7th/cmp-path") -- source for file system paths
-	-- snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
-	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	use("rafamadriz/friendly-snippets") -- useful snippets
+	use("github/copilot.vim") -- completion plugin
 	-- auto formatter
 	use("rhysd/vim-clang-format")
 	-- nerd tree
@@ -405,8 +403,6 @@ return packer.startup(function(use)
 	use('rbgrouleff/bclose.vim')
 	-- show function
 	use('vim-scripts/taglist.vim')
-	-- supertab for pop mapping
-	use('ervandew/supertab')
 	-- dir diff
 	use('will133/vim-dirdiff')
 	-- hexedit
