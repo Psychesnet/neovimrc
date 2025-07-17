@@ -26,20 +26,11 @@ else
     # python3.8
     sudo add-apt-repository ppa:deadsnakes/ppa
     sudo apt-get update
-    sudo apt-get install build-essential neovim curl screen tig exuberant-ctags \
+    sudo apt-get install neovim curl screen tig exuberant-ctags \
         net-tools git openssh-server cmake trace-cmd silversearcher-ag kernelshark python3.8 python3-pip \
-	    nodejs ruby ruby-dev lua
-    # py3
-    pip3 install neovim pyvim pynvim
-    # node.js
-    sudo npm install -g yarn neovim
-    sudo npm install -g ungit
-    # ruby
-    sudo gem install neovim
-    gem environment
+	    nodejs ruby ruby-dev lua neovim universal-ctags
 fi
 
-ln -sf $(pwd)/.vim/init.vim ~/.vimrc
 ln -sf $(pwd)/.xvimrc ~/.xvimrc
 ln -sf $(pwd)/.inputrc ~/.inputrc
 ln -sf $(pwd)/.bash_profile ~/.bash_profile
